@@ -3,14 +3,28 @@ html(lang="ja")
   head
     meta(charset="UTF-8")
     title ひみつの掲示板
+    style.
+      *{
+          text-align: center;
+          writing-mode: vertical-rl;
+          background-color: #669900;
+          color: #DDDDDD;
+          }
+      /*tategaki{
+        text-orientation: upright;
+      }*/
+
+     
   body
-    div(class="tategaki-wrap")
-     div(class="tategaki")
-      div(class="box mixed")
-       h1(align="right") ひみつの掲示板
-         h2 新規投稿
-         form(method="post" action="/posts")
-           div
-             textarea(name="content" cols=40 rows=4)
-           div
-             button(type="submit") 投稿
+     h1 ひみつの掲示板
+     a(href="/logout") ログアウト
+     h2 新しい投稿
+     form(method="post" action="/posts")
+       div
+        textarea(name="content" cols=20 rows=20)
+       div
+        button(type="submit") 発
+       h2 投稿一覧
+       each content in contents
+        p #{content}
+        hr
