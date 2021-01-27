@@ -31,32 +31,18 @@ html(lang="ja")
     -   else return `${seconds}秒前`;
     - }
 
-     a(href="/logout") ログアウト
-     h1(style="font-size:210%") なんでも 伝 言 板
-     h3 こちらへどうぞ
-     h2 ←
+    a(href="/logout") ログアウト
+    h1(style="font-size:230%") なんでも 伝 言 板
+    h3 こちらへどうぞ
+    h2 ←
      form(method="post" action="/posts")
        div
         textarea(name="content" cols=20 rows=20)
        div
         button(type="submit") 押
-       h2 
-        hr
-       each post in posts
-        //-- const isPostedByAdmin = (post.postedBy === 'admi')
-          if isPostedByAdmin
-           h3 ★
-          
-
-        p!=post.content (style="font-size:130%")
-        - const PastFromPostedTime = Keikajikan(post.createdAt);
-        p(style="font-size:70%") #{post.id} ＊ #{PastFromPostedTime} 
-            //-- var isAdmin = (user === 'admi')
-            //-if isAdmin
-            //-p 投稿者: #{post.postedBy}
-        - const isDeletable = (user === post.postedBy || isAdmin)
-          if isDeletable
-           form(method="post" action="/posts?delete=1")
-             input(type="hidden" name="id" value=post.id)
-             button(type="submit") 消
-        hr
+    hr
+    each post in posts
+      p(style="font-size:130%") #{post.content}
+      -const PastFromPostedTime = Keikajikan(post.createdAt);
+      p(style="font-size:70%") #{post.id} #{PastFromPostedTime}
+      hr  
