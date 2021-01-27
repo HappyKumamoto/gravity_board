@@ -48,10 +48,13 @@ html(lang="ja")
            h3 ★
           
 
-        p(style="font-size:130%") #{post.content}
+        p!=post.content (style="font-size:130%")
         - const PastFromPostedTime = Keikajikan(post.createdAt);
         p(style="font-size:70%") #{post.id} ＊ #{PastFromPostedTime} 
-        - const isDeletable = (user === post.postedBy || user === 'admi')
+            //-- var isAdmin = (user === 'admi')
+            //-if isAdmin
+            //-p 投稿者: #{post.postedBy}
+        - const isDeletable = (user === post.postedBy || isAdmin)
           if isDeletable
            form(method="post" action="/posts?delete=1")
              input(type="hidden" name="id" value=post.id)
