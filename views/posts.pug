@@ -40,9 +40,16 @@ html(lang="ja")
         textarea(name="content" cols=20 rows=20)
        div
         button(type="submit") 押
+    h4(style="text-align:right") 伝言は七日後消滅します↑まだできてません
+    hr
     hr
     each post in posts
       p(style="font-size:130%") #{post.content}
       -const PastFromPostedTime = Keikajikan(post.createdAt);
       p(style="font-size:70%") #{post.id} #{PastFromPostedTime}
       hr  
+    
+    //--var isDeletable = (PastFromPostedTime >= (1000*60*60*24*7));
+    
+
+    
