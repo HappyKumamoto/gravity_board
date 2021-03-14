@@ -10,14 +10,11 @@ const basic = auth.basic({
 
 const server = http.createServer(basic, (req, res) => {
   router.route(req, res);
-
-  })
-  .on('error', e => {
-    console.error('Server Error', e);
-  })
-  .on('clientError', e => {
-    console.error('Client Error', e);
-  });
+}).on('error', (e) => {
+  console.error('Server Error', e);
+}).on('clientError', (e) => {
+  console.error('Client Error', e);
+});
 
 const port = process.env.PORT || 8000;
 server.listen(port, () => {
